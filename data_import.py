@@ -62,64 +62,20 @@ def status_check(code):
 
 
 
-def download_count():
-
-    filter_object = { 
-    "filters": {
-        "time_period": [
-            {
-                "start_date": "2001-01-01",
-                "end_date": "2001-01-31"
-            }
-        ]
-    }
-    }
+def advanced_download():
     
-    data = json.dumps(filter_object)
-
-    endpoint = "/api/v2/downlaod/count/"
-
-    response = requests.post(url_base + endpoint, headers = headers, data=data)
-
-    status_check(response.status_code)
-
-    print(response.content)
-    return endpoint
-
-
-
-
-print(award_agency_search("National Science Foundation"))
-
-#agency_spending_by_recipiant('2018', '700')
-
-
-
-"""
-"filters": {
-
-
-        "recipient_locations": [
-        {
-            "country": "USA",
-            "state": "MA",
-        }
-        ]
+    filter_object = {
+        "filters": {
         "recipient_locations": [
         {
             "country": "USA",
             "state": "MA",
         }
         ], 
-    }
-        "country": "USA",
-        "state": "MA",
-
-,
         "time_period": [
             {
-                "start_date": "2016-01-01", 
-                "end_date": "2016-06-06"
+                "start_date": "2018-01-01", 
+                "end_date": "2019-01-01"
             }
         ],
         "agencies": [
@@ -149,6 +105,29 @@ print(award_agency_search("National Science Foundation"))
                     "tier": "toptier", 
                     "name": "National Science Foundation" 
             }
-"""
+        ]
+        }
+    }
+    
+    
+    data = json.dumps(filter_object)
+
+    endpoint = "/api/v2/download/awards/"
+
+    response = requests.post(url_base + endpoint, headers = headers, data=data)
+
+    status_check(response.status_code)
+
+    return response.content
+
+
+def download_status():
+    endpoint = "/api/v2/downlaod/count/"
+
+    response = requests.get(url_base + endpoint)
+
+    status_check(response.status_code)
+    return response.content
+
 
 
