@@ -1,6 +1,5 @@
-import requests 
-import json 
-
+import requests
+import json
 
 """
 Documentation for Filters:
@@ -10,8 +9,7 @@ https://github.com/fedspendingtransparency/usaspending-api/blob/master/usaspendi
 # URL Base for the USA Spending API 
 url_base = 'https://api.usaspending.gov'
 
-
-# Header for Post Requests 
+# Header for Post Requests
 headers = {"Content-type": "application/json"}
 
 
@@ -19,8 +17,7 @@ headers = {"Content-type": "application/json"}
 # award agencies matching the specific name (used to find out
 # information about the format)
 def award_agency_search(agency_name):
-
-    # Endpoint for the request 
+    # Endpoint for the request
     endpoint = '/api/v2/autocomplete/awarding_agency/'
 
     search_text = {"search_text": agency_name}
@@ -29,12 +26,11 @@ def award_agency_search(agency_name):
     data = json.dumps(search_text)
 
     # Request 
-    response = requests.post(url_base + endpoint, headers = headers, data = data)
+    response = requests.post(url_base + endpoint, headers=headers, data=data)
 
     status_check(response.status_code)
 
     return response.content
-
 
 
 def agency_spending_by_recipiant(year, agency_id):
@@ -42,7 +38,7 @@ def agency_spending_by_recipiant(year, agency_id):
 
     response = requests.get(url_base + endpoint)
 
-    # Prints Status 
+    # Prints Status
     status_check(response.status_code)
 
     print(response.content)
@@ -51,8 +47,7 @@ def agency_spending_by_recipiant(year, agency_id):
 
 
 def status_check(code):
-
-    # Prints Status 
+    # Prints Status
     if code == 200:
         print("Sucessful Request")
     elif code == 500:
@@ -61,60 +56,58 @@ def status_check(code):
         print("Malformation Error")
 
 
-
 def advanced_download():
-    
     filter_object = {
         "filters": {
-        "recipient_locations": [
-        {
-            "country": "USA",
-            "state": "MA",
-        }
-        ], 
-        "time_period": [
-            {
-                "start_date": "2018-01-01", 
-                "end_date": "2019-01-01"
-            }
-        ],
-        "agencies": [
-           {
-                "type": "funding",
-                    "tier": "toptier", 
-                    "name": "Federal Emergency Management Agency"  
+            "recipient_locations": [
+                {
+                    "country": "USA",
+                    "state": "MA",
+                }
+            ],
+            "time_period": [
+                {
+                    "start_date": "2018-01-01",
+                    "end_date": "2019-01-01"
+                }
+            ],
+            "agencies": [
+                {
+                    "type": "funding",
+                    "tier": "toptier",
+                    "name": "Federal Emergency Management Agency"
 
-            }, 
-            {
-                "type": "funding",
-                    "tier": "toptier", 
-                    "name":"Environmental Protection Agency"
-            }, 
-            {
-                "type": "funding",
-                    "tier": "toptier", 
-                    "name":"Department of Housing and Urban Development"
-            }, 
-            {
-                "type": "funding",
-                    "tier": "toptier", 
-                    "name": "Department of Health and Human Services"  
-            }, 
-            {
-                "type": "funding",
-                    "tier": "toptier", 
-                    "name": "National Science Foundation" 
-            }
-        ]
+                },
+                {
+                    "type": "funding",
+                    "tier": "toptier",
+                    "name": "Environmental Protection Agency"
+                },
+                {
+                    "type": "funding",
+                    "tier": "toptier",
+                    "name": "Department of Housing and Urban Development"
+                },
+                {
+                    "type": "funding",
+                    "tier": "toptier",
+                    "name": "Department of Health and Human Services"
+                },
+                {
+                    "type": "funding",
+                    "tier": "toptier",
+                    "name": "National Science Foundation"
+                }
+            ]
         }
     }
-    
-    
+
     data = json.dumps(filter_object)
 
     endpoint = "/api/v2/download/awards/"
 
-    response = requests.post(url_base + endpoint, headers = headers, data=data)
+
+    response = requests.post(url_base + endpoint, headers=headers, data=data)
 
     status_check(response.status_code)
 
@@ -128,6 +121,3 @@ def download_status():
 
     status_check(response.status_code)
     return response.content
-
-
-
