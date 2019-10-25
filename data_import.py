@@ -67,8 +67,8 @@ def advanced_download():
             ],
             "time_period": [
                 {
-                    "start_date": "2018-01-01",
-                    "end_date": "2019-01-01"
+                    "start_date": "2009-10-01",
+                    "end_date": "2019-10-01"
                 }
             ],
             "agencies": [
