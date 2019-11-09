@@ -74,8 +74,8 @@ def advanced_download():
         ], 
         "time_period": [
             {
-                "start_date": "2018-01-01", 
-                "end_date": "2019-01-01"
+                "start_date": "2009-10-01", 
+                "end_date": "2019-09-30"
             }
         ],
         "agencies": [
@@ -104,6 +104,18 @@ def advanced_download():
                 "type": "funding",
                     "tier": "toptier", 
                     "name": "National Science Foundation" 
+            }, 
+            {
+                "type": "funding", 
+                    "tier": "subtier",
+                    "name": "Department of Transportation"
+
+            },
+            {
+                "type": "funding",
+                    "tier": "subtier",
+                    "name": "Small Business Innovation Research"
+
             }
         ]
         }
@@ -130,4 +142,6 @@ def download_status():
     return response.content
 
 
+html = advanced_download()
+print(html)
 
