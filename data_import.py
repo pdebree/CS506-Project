@@ -59,7 +59,6 @@ def status_check(code):
 def advanced_download():
     filter_object = {
         "filters": {
-<<<<<<< HEAD
         "recipient_locations": [
         {
             "country": "USA",
@@ -68,8 +67,8 @@ def advanced_download():
         ], 
         "time_period": [
             {
-                "start_date": "2009-10-01", 
-                "end_date": "2019-09-30"
+                "start_date": "2009-10-01",
+                "end_date": "2019-10-01"
             }
         ],
         "agencies": [
@@ -112,48 +111,6 @@ def advanced_download():
 
             }
         ]
-=======
-            "recipient_locations": [
-                {
-                    "country": "USA",
-                    "state": "MA",
-                }
-            ],
-            "time_period": [
-                {
-                    "start_date": "2009-10-01",
-                    "end_date": "2019-10-01"
-                }
-            ],
-            "agencies": [
-                {
-                    "type": "funding",
-                    "tier": "toptier",
-                    "name": "Federal Emergency Management Agency"
-
-                },
-                {
-                    "type": "funding",
-                    "tier": "toptier",
-                    "name": "Environmental Protection Agency"
-                },
-                {
-                    "type": "funding",
-                    "tier": "toptier",
-                    "name": "Department of Housing and Urban Development"
-                },
-                {
-                    "type": "funding",
-                    "tier": "toptier",
-                    "name": "Department of Health and Human Services"
-                },
-                {
-                    "type": "funding",
-                    "tier": "toptier",
-                    "name": "National Science Foundation"
-                }
-            ]
->>>>>>> c1e9ba30003ee2b9c16e37a859fcbfd42468db27
         }
     }
 
@@ -175,13 +132,9 @@ def download_status():
     response = requests.get(url_base + endpoint)
 
     status_check(response.status_code)
-<<<<<<< HEAD
+
     return response.content
 
 
 html = advanced_download()
 print(html)
-
-=======
-    return response.content
->>>>>>> c1e9ba30003ee2b9c16e37a859fcbfd42468db27
