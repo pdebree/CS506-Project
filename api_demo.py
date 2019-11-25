@@ -48,4 +48,9 @@ request_url = url_base + endpoint
 response = requests.post(request_url, headers = headers, data = data)
 
 # 5. Let's see what the site returned:
-response.json()
+print(response.json())
+
+
+
+
+

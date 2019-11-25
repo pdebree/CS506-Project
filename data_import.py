@@ -4,6 +4,7 @@ import json
 """
 Documentation for Filters:
 https://github.com/fedspendingtransparency/usaspending-api/blob/master/usaspending_api/api_docs/api_documentation/search_filters.md
+
 """
 
 # URL Base for the USA Spending API 
@@ -11,7 +12,6 @@ url_base = 'https://api.usaspending.gov'
 
 # Header for Post Requests
 headers = {"Content-type": "application/json"}
-
 
 # Takes in an award name and creates a request to the API to POST
 # award agencies matching the specific name (used to find out
@@ -108,6 +108,19 @@ def advanced_download():
                 "type": "funding",
                     "tier": "subtier",
                     "name": "Small Business Innovation Research"
+
+            }, 
+            {
+                "type": "funding",
+                    "tier": "subtier",
+                    "name": "Small Business Administration"
+            },
+            {
+                "type": "funding",
+                    "tier": "toptier",
+                    "name": "Department of Homeland Security"
+            }, 
+            {
 
             }
         ]
